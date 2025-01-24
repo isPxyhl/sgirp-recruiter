@@ -36,9 +36,12 @@ export default function NavBar() {
               ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
               : "https://cdn.discordapp.com/embed/avatars/0.png"
                 
-            <span className="glow-text"><Image
-                                          scr={avatarUrl || "/"}
-                                          alt={`{userData.username}'s profile`}
+            <span className="glow-text font-bold"><Image
+                                          scr={avatarUrl || "/placeholder.svg"}
+                                          alt={`${userData.username}'s avatar`}
+                                          width={64}
+                                          height={64}
+                                          className="rounded-full mr-4 ring-2 ring-white/20"
                                           />{userData.username}</span>
           ) : (
             <Link href="/api/auth/discord" className="nav-link">
