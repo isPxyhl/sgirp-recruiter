@@ -33,7 +33,7 @@ export default function Dashboard() {
           />
           <h2 className="text-2xl font-semibold text-red-400">{userData.username}</h2>
         </div>
-        <p className="text-red-300">User ID: {userData.id}</p>
+        <p className="font-sans">User ID: {userData.id}</p>
       </div>
       {/* Add more dashboard content here */}
     </div>
