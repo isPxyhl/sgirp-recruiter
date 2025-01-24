@@ -10,7 +10,7 @@ export default function NavBar() {
     <nav className="bg-gray-900 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-red-500 text-xl font-bold">
-          Discord Bot
+          Recruiter
         </Link>
         <div className="space-x-4">
           <Link href="/" className="text-red-400 hover:text-red-300">
