@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET
-const REDIRECT_URI = `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/discord/callback`
+const REDIRECT_URI = `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`
 
 export async function GET() {
   const params = new URLSearchParams({
