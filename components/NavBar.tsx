@@ -39,14 +39,14 @@ export default function NavBar() {
             Dashboard
           </Link>
           {userData ? (
-            <span className="glow-text font-bold">
+            <Link href="/api/auth/discord" className="glow-text font-bold">
               
               <Image src={avatarUrl || "/placeholder.svg"}
                 alt={`${userData.username}'s avatar`}
                 width={64}
                 height={64}
                 className="rounded-full mr-4 ring-2 ring-white/20"/>{userData.username}
-            </span>
+            </Link>
           ) : (
             <Link href="/api/auth/discord" className="nav-link">
               Login
