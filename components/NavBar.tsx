@@ -16,7 +16,7 @@ export default function NavBar() {
             alt="Logo"
             width={100}
             height={40}
-            className="h-8 w-auto"
+            className="h-8 w-auto rounded-full mr-4 ring-2 ring-white/20"
         />
         
         <Link href="/add" className="nav-link" font-bold>
