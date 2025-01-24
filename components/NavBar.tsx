@@ -16,8 +16,8 @@ export default function NavBar() {
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled1_20250122035540-D0L3IWndYxbzVVHCAI8KMsSTSKR73b.png"
             alt="Logo"
             width={100}
-            height={100}
-            className="h-80 w-auto rounded-full mr-4 ring-2 ring-white/20"
+            height={40}
+            className="h-auto w-auto rounded-full mr-4 ring-2 ring-white/20"
           />
         
           Recruiter
