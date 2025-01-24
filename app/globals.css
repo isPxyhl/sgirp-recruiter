@@ -3,8 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --glow-white: #ffffff;
+    --glow-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
   body {
-    @apply bg-black text-red-500;
+    @apply bg-black text-white;
+  }
+}
+
+@layer components {
+  .glow-text {
+    @apply text-white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .nav-link {
+    @apply text-white transition-all duration-300;
+  }
+
+  .nav-link:hover {
+    @apply text-white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
 }
 
