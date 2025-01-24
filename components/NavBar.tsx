@@ -34,19 +34,19 @@ export default function NavBar() {
             Dashboard
           </Link>
           {userData ? (
-            
+      const avatarUrl = userData.avatar  
+        ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`  
+        : "https://cdn.discordapp.com/embed/avatars/0.png"
             <span className="glow-text font-bold">
+              
               <Image
-                const avatarUrl = userData.avatar
-    ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-    : "https://cdn.discordapp.com/embed/avatars/0.png"
   
                 scr={"/placeholder.svg"}
                 alt={`${userData.username}'s avatar`}
                 width={64}
                 height={64}
                 className="rounded-full mr-4 ring-2 ring-white/20"
-                />{userData.username}
+              />{userData.username}
             </span>
           ) : (
             <Link href="/api/auth/discord" className="nav-link">
