@@ -17,7 +17,7 @@ export default function NavBar() {
             alt="Logo"
             width={100}
             height={40}
-            className="h-auto w-auto rounded-full mr-4 ring-2 ring-white/20"
+            className="h-80 w-auto rounded-full mr-4 ring-2 ring-white/20"
           />
         
           Recruiter
