@@ -1,9 +1,9 @@
 {
-  "name": "my-v0-project",
+  "name": "sgirp-recruiter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "isPxyhl",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
