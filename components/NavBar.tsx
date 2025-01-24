@@ -41,7 +41,7 @@ export default function NavBar() {
           {userData ? (
             <span className="glow-text font-bold">
               
-              <Image scr={avatarUrl || "/placeholder.svg"}
+              <Image src={avatarUrl || "/placeholder.svg"}
                 alt={`${userData.username}'s avatar`}
                 width={64}
                 height={64}
