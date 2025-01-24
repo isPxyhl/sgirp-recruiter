@@ -4,8 +4,8 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Discord Bot Website",
-  description: "Authorize and manage your Discord bot",
+  title: "Recruiter Bot",
+  description: "Simple way to manage your SGIRP faction's discord server.",
 }
 
 export default function RootLayout({
