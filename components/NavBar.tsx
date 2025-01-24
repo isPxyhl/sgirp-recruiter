@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { cookies } from "next/headers"
+import Image from "next/image"
 
 export default function NavBar() {
   const cookieStore = cookies()
@@ -7,24 +8,28 @@ export default function NavBar() {
   const userData = userDataCookie ? JSON.parse(userDataCookie.value) : null
 
   return (
-    <nav className="bg-gray-900 p-4">
-      <div className="container mx-auto flex items-center">
-        <Link href="/" className="text-red-500 text-xl font-bold flex-shrink-0">
-          Recruiter
+    <nav className="bg-black border-b border-white/10 p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled1_20250122035540-D0L3IWndYxbzVVHCAI8KMsSTSKR73b.png"
+            alt="Logo"
+            width={100}
+            height={40}
+            className="h-8 w-auto"
+          />
         </Link>
-        <div className="flex-grow flex justify-center space-x-8">
-          <Link href="/" className="text-red-400 hover:text-red-300">
+        <div className="space-x-8">
+          <Link href="/" className="nav-link">
             Home
           </Link>
-          <Link href="/dashboard" className="text-red-400 hover:text-red-300">
+          <Link href="/dashboard" className="nav-link">
             Dashboard
           </Link>
-        </div>
-        <div className="flex-shrink-0">
           {userData ? (
-            <span className="text-red-400">{userData.username}</span>
+            <span className="glow-text">{userData.username}</span>
           ) : (
-            <Link href="/api/auth/discord" className="text-red-400 hover:text-red-300">
+            <Link href="/api/auth/discord" className="nav-link">
               Login
             </Link>
           )}
