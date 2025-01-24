@@ -18,7 +18,7 @@ export default function NavBar() {
             width={100}
             height={40}
             className="h-8 w-auto"
-          /> Recruiter
+          /> Recruiter wth
         </Link>
         
         <div className="space-x-8">
