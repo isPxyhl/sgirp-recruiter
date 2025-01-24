@@ -8,9 +8,11 @@ export default function NavBar() {
   const userData = userDataCookie ? JSON.parse(userDataCookie.value) : null
   
   if (userData) {
-    const avatarUrl = userData.avatar
-      ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-      : "https://cdn.discordapp.com/embed/avatars/0.png"
+    return (
+      const avatarUrl = userData.avatar
+        ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+        : "https://cdn.discordapp.com/embed/avatars/0.png"
+    )
   } 
   
 
