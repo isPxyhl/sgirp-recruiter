@@ -35,7 +35,7 @@ export default function Dashboard() {
         </div>
         <p className="font-sans">User ID: {userData.id}</p>
       </div>
-      {/* Add more dashboard content here */}
+      <p className="font-sans">Helloo</p>
     </div>
   )
 }
