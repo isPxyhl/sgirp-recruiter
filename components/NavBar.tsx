@@ -10,17 +10,18 @@ export default function NavBar() {
   return (
     <nav className="bg-black border-b border-white/10 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2 font-bold">
-          <Image
+        <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled1_20250122035540-D0L3IWndYxbzVVHCAI8KMsSTSKR73b.png"
             alt="Logo"
             width={100}
             height={40}
             className="h-8 w-auto"
-          />
-          Recruiter
-        </Link>
+        />
+        
         <div className="space-x-8">
+          <Link href="/add" className="nav-link">
+            Recruiter
+          </Link>
           <Link href="/" className="nav-link">
             Home
           </Link>
