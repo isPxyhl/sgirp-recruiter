@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl font-bold mb-8 text-red-500">Dashboard</h1>
+      <h1 class="font-sans" className="text-4xl font-bold mb-8 text-red-500">Dashboard</h1>
       <div className="bg-gray-900 shadow-md rounded-lg p-8 mb-8">
         <div className="flex items-center mb-4">
           <Image
