@@ -17,11 +17,12 @@ export default function NavBar() {
             height={40}
             className="h-8 w-auto"
         />
+        <Link href="/add" className="nav-link">
+            Recruiter
+        </Link>
         
         <div className="space-x-8">
-          <Link href="/add" className="nav-link">
-            Recruiter
-          </Link>
+          
           <Link href="/" className="nav-link">
             Home
           </Link>
