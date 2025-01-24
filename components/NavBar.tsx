@@ -18,6 +18,7 @@ export default function NavBar() {
             height={40}
             className="h-8 w-auto"
           />
+          Recruiter
         </Link>
         <div className="space-x-8">
           <Link href="/" className="nav-link">
