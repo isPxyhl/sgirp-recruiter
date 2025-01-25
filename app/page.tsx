@@ -14,7 +14,7 @@ export default function Home() {
         <div className="flex justify-between space-x-2">
           <Link
             href="/api/auth/discord"
-            className="flex items-center bg-white text-black hover:bg-black/90 transition-all duration-300 font-bold py-3 px-6 rounded-[15px_15px]"
+            className="flex items-center bg-white text-black hover:bg-black/90 transition-all duration-300 font-bold py-3 px-6 rounded-[15px_15px] space-x-4"
           >
             <Image 
               src="https://media.discordapp.net/attachments/1327708896822825092/1332564891990495377/download_3.png?ex=6795b744&is=679465c4&hm=57f9bc56dfa91c0cf7807977e772767e5a40d66014a79d5eee9ca27f1ebe4a28&"
