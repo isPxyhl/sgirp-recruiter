@@ -7,7 +7,6 @@ export default function NavBar() {
   const userDataCookie = cookieStore.get("discord_user")
   const userData = userDataCookie ? JSON.parse(userDataCookie.value) : null
   avatarUrl = "/placeholder.svg"
-  
   if (userData) {
     avatarUrl = userData.avatar
       ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
