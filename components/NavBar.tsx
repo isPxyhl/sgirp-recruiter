@@ -32,7 +32,7 @@ export default function NavBar() {
             Dashboard
           </Link>
           {userData ? (
-            <div className="flex items-center space-x-2">
+            <div className="flex justify-content space-x-2">
               <Link href="/api/auth/discord" className="nav-link">
                 <Image
                   src={avatarUrl || "/placeholder.svg"}
