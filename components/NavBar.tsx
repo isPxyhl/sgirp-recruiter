@@ -24,13 +24,15 @@ export default function NavBar() {
             className="rounded-full ring-1 ring-white/20"
           /><span className="glow-text">TEST</span>
         </Link>
-        <div className="space-x-8 flex items-center">
+        <div className="space-x-4 flex items-center">
           <Link href="/" className="nav-link">
             Home
           </Link>
+          <span className="text-white/20">|</span>
           <Link href="/dashboard" className="nav-link">
             Dashboard
           </Link>
+          <span className="text-white/20">|</span>
           {userData ? (
             <div className="flex justify-between space-x-2">
               <Link href="/api/auth/discord" className="flex space-x-2 font-bold glow-text">
