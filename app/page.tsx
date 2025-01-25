@@ -8,7 +8,7 @@ export default function Home() {
       <Link
         href="/api/auth/discord"
         className="bg-[#6064f4] text-white hover:bg-[#6064f4]/90 transition-all duration-300 font-bold py-3 px-6 rounded-[15px_15px]"
-      >
+      ><a href="https://www.youtube.com/" class="fab fa-discord" />
         Sign in with Discord
       </Link>
     </div>
