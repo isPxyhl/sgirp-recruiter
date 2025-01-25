@@ -33,14 +33,16 @@ export default function NavBar() {
           </Link>
           {userData ? (
             <div className="flex items-center space-x-2">
-              <Image
-                src={avatarUrl || "/placeholder.svg"}
-                alt={`${userData.username}'s avatar`}
-                width={32}
-                height={32}
-                className="rounded-full ring-1 ring-white/20"
-              />
-              <span className="glow-text">{userData.username}</span>
+              <Link href="/api/auth/discord" className="nav-link">
+                <Image
+                  src={avatarUrl || "/placeholder.svg"}
+                  alt={`${userData.username}'s avatar`}
+                  width={32}
+                  height={32}
+                  className="rounded-full ring-1 ring-white/20"
+                />
+                <span className="glow-text">{userData.username}</span>
+              </Link>
             </div>
           ) : (
             <Link href="/api/auth/discord" className="nav-link">
