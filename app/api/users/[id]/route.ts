@@ -1,34 +1,24 @@
 import { NextResponse } from "next/server"
+import clientPromise from "../../../lib/mongodb"
 
-// This is a simple in-memory store. In a real application, you'd use a database.
-const userStore: { [discordID: string]: string } = {}
+export async function GET(request: Request, { params }: { params: { id: string } }) {
+  const discordID = params.id
 
-export async function POST(request: Request) {
   try {
-    const body = await request.json()
-    const { discordID, robloxID } = body
+    const client = await clientPromise
+    const db = client.db("discordbot")
+    const users = db.collection("users")
 
-    // Validate the input
-    if (!discordID || !robloxID) {
-      return NextResponse.json({ error: "Missing discordID or robloxID" }, { status: 400 })
+    const user = await users.findOne({ discordID })
+
+    if (user) {
+      return NextResponse.json({ robloxID: user.robloxID }, { status: 200 })
+    } else {
+      return NextResponse.json({ error: "Discord ID not found" }, { status: 404 })
     }
-
-    // Store the mapping
-    userStore[discordID] = robloxID
-
-    return NextResponse.json({ message: "User data received successfully" }, { status: 200 })
   } catch (error) {
     console.error("Error processing request:", error)
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
   }
 }
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const discordID = params.id
-
-  if (discordID in userStore) {
-    return NextResponse.json({ robloxID: userStore[discordID] }, { status: 200 })
-  } else {
-    return NextResponse.json({ error: "Discord ID not found" }, { status: 404 })
-  }
-}
