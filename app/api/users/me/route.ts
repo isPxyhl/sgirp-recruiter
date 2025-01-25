@@ -1,14 +1,14 @@
-import { NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
-import { connectToDatabase } from "../../../lib/mongodb"
+import { connectToDatabase } from "@/lib/mongodb"
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const cookieStore = cookies()
     const token = cookieStore.get("token")
 
     if (!token) {
-      return new NextResponse("Unauthorized", { status: 401 })
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const { db } = await connectToDatabase()
@@ -17,13 +17,16 @@ export async function GET() {
     })
 
     if (!user) {
-      return new NextResponse("User not found", { status: 404 })
+      return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 
-    return NextResponse.json(user)
+    // Remove sensitive information before sending the response
+    const { password, ...safeUser } = user
+
+    return NextResponse.json(safeUser)
   } catch (error) {
     console.error("Error in /api/users/me:", error)
-    return new NextResponse("Internal Server Error", { status: 500 })
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
   }
 }
 
