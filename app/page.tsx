@@ -7,9 +7,9 @@ export default function Home() {
       <p className="text-xl mb-8 text-white/80">Elegant, efficient.</p>
       <Link
         href="/api/auth/discord"
-        className="bg-white text-black hover:bg-white/90 transition-all duration-300 font-bold py-3 px-6 rounded-lg"
+        className="bg-blue text-white hover:bg-blur/90 transition-all duration-300 font-bold py-3 px-6 border-radius: 15px 50px"
       >
-        Add to Discord
+        Sign in with Discord
       </Link>
     </div>
   )
