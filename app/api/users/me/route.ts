@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
-import { connectToDatabase } from "@/lib/mongodb"
+import { connectToDatabase } from "../../../lib/mongodb"
 
 export async function GET(request: NextRequest) {
   try {
