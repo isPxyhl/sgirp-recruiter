@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Recruiter Bot",
   description: "Simple way to manage your SGIRP faction's discord server.",
+  icons : {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
@@ -16,9 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={`${inter.className} bg-black text-red-500`}>
-        <CustomHead />
+        
         <NavBar />
         <main className="min-h-screen">{children}</main>
       </body>
