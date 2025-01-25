@@ -15,12 +15,22 @@ export async function POST(request: Request) {
     const db = client.db("discordbot")
     const users = db.collection("users")
 
-    // Update or insert the user
-    await users.updateOne({ discordID }, { $set: { robloxID } }, { upsert: true })
+    // Update or insert the user with a timeout
+    const result = await Promise.race([
+      users.updateOne({ discordID }, { $set: { robloxID } }, { upsert: true }),
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Database operation timed out")), 5000)),
+    ])
+
+    if (result instanceof Error) {
+      throw result
+    }
 
     return NextResponse.json({ message: "User data received successfully" }, { status: 200 })
   } catch (error) {
     console.error("Error processing request:", error)
+    if (error instanceof Error && error.message === "Database operation timed out") {
+      return NextResponse.json({ error: "Request timed out. Please try again." }, { status: 504 })
+    }
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
   }
 }
