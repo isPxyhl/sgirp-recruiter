@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Card } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 interface RobloxUser {
   description: string
@@ -62,10 +63,32 @@ export default function ProfilePage() {
     <div className="container mx-auto p-4">
       <h1 className="text-4xl font-bold mb-8">Profile</h1>
 
+      {userData && (
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>User Information</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <div>
+                <label className="text-sm font-medium text-gray-500">Discord ID</label>
+                <p className="text-lg">{userData.discordId}</p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-500">Roblox ID</label>
+                <p className="text-lg">{userData.robloxID || "Not linked"}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {robloxData && (
-        <div className="grid gap-6">
-          <Card className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Roblox Information</h2>
+        <Card>
+          <CardHeader>
+            <CardTitle>Roblox Information</CardTitle>
+          </CardHeader>
+          <CardContent>
             <div className="grid gap-4">
               <div>
                 <label className="text-sm font-medium text-gray-500">Display Name</label>
@@ -84,9 +107,13 @@ export default function ProfilePage() {
                 <p className="text-lg whitespace-pre-wrap">{robloxData.description || "No description provided"}</p>
               </div>
             </div>
-          </Card>
-        </div>
+          </CardContent>
+        </Card>
       )}
+
+      <div className="mt-8">
+        <Button onClick={() => router.push("/dashboard")}>Back to Dashboard</Button>
+      </div>
     </div>
   )
 }
