@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { readStorage, writeStorage } from "../../lib/storage"
+import clientPromise from "../../lib/mongodb"
 
 export async function POST(request: Request) {
   try {
@@ -11,14 +11,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing discordID or robloxID" }, { status: 400 })
     }
 
-    // Read current storage
-    const userStore = await readStorage()
+    const client = await clientPromise
+    const db = client.db("discordbot")
+    const users = db.collection("users")
 
-    // Update storage
-    userStore[discordID] = robloxID
-
-    // Write updated storage
-    await writeStorage(userStore)
+    // Update or insert the user
+    await users.updateOne({ discordID }, { $set: { robloxID } }, { upsert: true })
 
     return NextResponse.json({ message: "User data received successfully" }, { status: 200 })
   } catch (error) {
