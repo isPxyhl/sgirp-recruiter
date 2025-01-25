@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-content min-h-screen py-2">
       <h1 className="text-5xl font-bold mb-8 glow-text">Recruiter Bot</h1>
       <p className="text-xl mb-8 text-white/80">Elegant, efficient.</p>
-      <div className="justify-content flex space-x-2">
+      <div className="flex justify-between space-x-2">
         <Link
           href="/api/auth/discord"
           className="bg-white text-black hover:bg-black/90 transition-all duration-300 font-bold py-3 px-6 rounded-[15px_15px]"
