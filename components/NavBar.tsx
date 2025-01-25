@@ -40,8 +40,7 @@ export default function NavBar() {
                   width={32}
                   height={32}
                   className="rounded-full ring-1 ring-white/20"
-                />
-                <span className="glow-text">{userData.username}</span>
+                /><span className="glow-text">{userData.username}</span>
               </Link>
             </div>
           ) : (
