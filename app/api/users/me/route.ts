@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
+import { cookies } from "next/headers"
 import { connectToDatabase } from "../../lib/mongodb"
 
 export async function GET() {
   try {
-    const session = await getServerSession()
+    const cookieStore = cookies()
+    const token = cookieStore.get("token")
 
-    if (!session) {
+    if (!token) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
     const { db } = await connectToDatabase()
     const user = await db.collection("users").findOne({
-      discordId: session.user.id,
+      token: token.value,
     })
 
     if (!user) {
