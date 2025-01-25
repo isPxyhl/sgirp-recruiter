@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { cookies } from "next/headers"
 import Image from "next/image"
-
+declare var avatarUrl: string 
 export default function NavBar() {
   const cookieStore = cookies()
   const userDataCookie = cookieStore.get("discord_user")
