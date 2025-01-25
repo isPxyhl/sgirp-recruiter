@@ -1,40 +1,30 @@
 import Link from "next/link"
-import { cookies } from "next/headers"
 import Image from "next/image"
-declare var avatarUrl: string 
+import { cookies } from "next/headers"
+
 export default function NavBar() {
   const cookieStore = cookies()
   const userDataCookie = cookieStore.get("discord_user")
   const userData = userDataCookie ? JSON.parse(userDataCookie.value) : null
-  avatarUrl = "/placeholder.svg"
-  if (userData) {
-    avatarUrl = userData.avatar
-      ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
-      : "https://cdn.discordapp.com/embed/avatars/0.png" 
-  } else {
-    avatarUrl = "/placeholder.svg"
-  }
-  
 
-  
+  // Properly construct the avatar URL based on user data
+  const avatarUrl = userData?.avatar
+    ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+    : "/placeholder.svg"
+
   return (
     <nav className="bg-black border-b border-white/10 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        
-        <Link href="/add" className="nav-link font-bold flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled1_20250122035540-D0L3IWndYxbzVVHCAI8KMsSTSKR73b.png"
             alt="Logo"
-            width={80}
+            width={100}
             height={40}
-            className="h-8 w-auto rounded-full mr-4 ring-2 ring-white/20"
+            className="h-8 w-auto"
           />
-        
-          Recruiter
         </Link>
-        
-        <div className="space-x-8">
-          
+        <div className="space-x-8 flex items-center">
           <Link href="/" className="nav-link">
             Home
           </Link>
@@ -42,14 +32,16 @@ export default function NavBar() {
             Dashboard
           </Link>
           {userData ? (
-            <Link href="/api/auth/discord" className="glow-text font-bold">
-              
-              <Image src={avatarUrl}
+            <div className="flex items-center space-x-2">
+              <Image
+                src={avatarUrl || "/placeholder.svg"}
                 alt={`${userData.username}'s avatar`}
-                width={64}
-                height={64}
-                className="rounded-full mr-4 ring-2 ring-white/20"/>{userData.username}
-            </Link>
+                width={32}
+                height={32}
+                className="rounded-full ring-1 ring-white/20"
+              />
+              <span className="glow-text">{userData.username}</span>
+            </div>
           ) : (
             <Link href="/api/auth/discord" className="nav-link">
               Login
