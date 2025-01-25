@@ -14,15 +14,15 @@ export default function NavBar() {
 
   return (
     <nav className="bg-black border-b border-white/10 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/add" className="flex items-center space-x-2 font-bold">
+      <div className="container mx-auto flex justify-between">
+        <Link href="/add" className="flex space-x-2 font-bold">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Untitled1_20250122035540-D0L3IWndYxbzVVHCAI8KMsSTSKR73b.png"
             alt="Logo"
             width={32}
             height={32}
             className="rounded-full ring-1 ring-white/20"
-          /> Text Here 
+          /><span className="glow-text">{userData.username}</span>
         </Link>
         <div className="space-x-8 flex items-center">
           <Link href="/" className="nav-link">
