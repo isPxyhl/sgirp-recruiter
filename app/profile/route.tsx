@@ -16,6 +16,7 @@ export default function ProfilePage() {
   const [userData, setUserData] = useState<any>(null)
   const [robloxData, setRobloxData] = useState<RobloxUser | null>(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -40,13 +41,29 @@ export default function ProfilePage() {
         }
       } catch (error) {
         console.error("Error fetching data:", error)
+        if (error instanceof Error && error.message === "Failed to fetch user data") {
+          router.push("/login") // Redirect to login page if unauthorized
+        }
+        setError(error instanceof Error ? error.message : "An unknown error occurred")
       } finally {
         setLoading(false)
       }
     }
 
     fetchData()
-  }, [])
+  }, [router])
+
+  if (error) {
+    return (
+      <div className="container mx-auto p-4">
+        <h1 className="text-4xl font-bold mb-8">Error</h1>
+        <p className="text-red-500">{error}</p>
+        <Button onClick={() => router.push("/dashboard")} className="mt-4">
+          Back to Dashboard
+        </Button>
+      </div>
+    )
+  }
 
   if (loading) {
     return (
