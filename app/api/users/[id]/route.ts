@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server"
-import { readStorage } from "../../../lib/storage"
+import clientPromise from "../../../lib/mongodb"
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   const discordID = params.id
 
-  // Read storage
-  const userStore = await readStorage()
+  try {
+    const client = await clientPromise
+    const db = client.db("discordbot")
+    const users = db.collection("users")
 
-  if (discordID in userStore) {
-    return NextResponse.json({ robloxID: userStore[discordID] }, { status: 200 })
-  } else {
-    return NextResponse.json({ error: "Discord ID not found" }, { status: 404 })
+    const user = await users.findOne({ discordID })
+
+    if (user) {
+      return NextResponse.json({ robloxID: user.robloxID }, { status: 200 })
+    } else {
+      return NextResponse.json({ error: "Discord ID not found" }, { status: 404 })
+    }
+  } catch (error) {
+    console.error("Error processing request:", error)
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
   }
 }
 
