@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { readStorage, writeStorage } from "../../lib/storage"
 
 export async function POST(request: Request) {
   try {
@@ -10,11 +11,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing discordID or robloxID" }, { status: 400 })
     }
 
-    // Here you would typically save this data to a database
-    // For this example, we'll just log it and return a success message
-    console.log(`Received: Discord ID ${discordID}, Roblox ID ${robloxID}`)
+    // Read current storage
+    const userStore = await readStorage()
 
-    // TODO: Add database logic here
+    // Update storage
+    userStore[discordID] = robloxID
+
+    // Write updated storage
+    await writeStorage(userStore)
 
     return NextResponse.json({ message: "User data received successfully" }, { status: 200 })
   } catch (error) {
