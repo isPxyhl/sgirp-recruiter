@@ -6,7 +6,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
 
   try {
     const client = await clientPromise
-    const db = client.db("discordbot")
+    const db = client.db("userLinkingDB")
     const users = db.collection("users")
 
     const user = await users.findOne({ discordID })
