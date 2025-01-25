@@ -49,39 +49,39 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto p-4">
-        <div className="animate-pulse">
-          <div className="h-32 bg-gray-200 rounded-lg mb-4"></div>
-          <div className="h-24 bg-gray-200 rounded-lg"></div>
+      <div>
+        <div>
+          <div />
+          <div />
         </div>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-8">Profile</h1>
+    <div>
+      <h1>Profile</h1>
 
       {robloxData && (
-        <div className="grid gap-6">
-          <Card className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Roblox Information</h2>
-            <div className="grid gap-4">
+        <div>
+          <Card>
+            <h2>Roblox Information</h2>
+            <div>
               <div>
-                <label className="text-sm font-medium text-gray-500">Display Name</label>
-                <p className="text-lg">{robloxData.displayName}</p>
+                <label>Display Name</label>
+                <p>{robloxData.displayName}</p>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-500">Username</label>
-                <p className="text-lg">{robloxData.name}</p>
+                <label>Username</label>
+                <p>{robloxData.name}</p>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-500">User ID</label>
-                <p className="text-lg">{robloxData.id}</p>
+                <label>User ID</label>
+                <p>{robloxData.id}</p>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-500">Description</label>
-                <p className="text-lg whitespace-pre-wrap">{robloxData.description || "No description provided"}</p>
+                <label>Description</label>
+                <p>{robloxData.description || "No description provided"}</p>
               </div>
             </div>
           </Card>
@@ -91,4 +91,3 @@ export default function ProfilePage() {
   )
 }
 
-                      
