@@ -7,7 +7,18 @@ export const metadata = {
   title: "Recruiter Bot",
   description: "Simple way to manage your SGIRP faction's discord server.",
   icons : {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "any"
+      },
+      {
+        url: "/favicon.png",
+        sizes: "32x32",
+        type: "image/png"
+      },
+      
+    ]
   },
 }
 
